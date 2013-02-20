@@ -8,7 +8,6 @@
 		<groupId>com.igraliste.test</groupId>
 		<artifactId>igraliste</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-		<relativePath>..</relativePath>
 	</parent>
 
 	<artifactId>igraliste-api</artifactId>

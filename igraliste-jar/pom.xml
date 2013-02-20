@@ -8,7 +8,6 @@
 		<artifactId>igraliste</artifactId>
 		<groupId>com.igraliste.test</groupId>
 		<version>0.0.1-SNAPSHOT</version>
-		<relativePath>..</relativePath>
 	</parent>
 
 	<artifactId>igraliste-jar</artifactId>
@@ -35,9 +34,8 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>${project.groupId}</groupId>
-			<artifactId>${project.parent.artifactId}-api</artifactId>
-			<version>${project.version}</version>
+			<groupId>com.igraliste.test</groupId>
+			<artifactId>igraliste-api</artifactId>
 		</dependency>
 	</dependencies>
 
