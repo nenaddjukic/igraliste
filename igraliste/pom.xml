@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	
+	<modelVersion>4.0.0</modelVersion>
+	
+	<groupId>com.igraliste.test</groupId>
+	<artifactId>igraliste</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<name>[${project.artifactId}] JBOSS JEE6 Project</name>
+
+	<modules>
+		<module>igraliste-ear</module>
+		<module>igraliste-jar</module>
+		<module>igraliste-api</module>
+		<module>igraliste-war</module>
+	</modules>
+
+	<properties>
+		<version.weld>1.1.5.Final</version.weld>
+		<version.slf4j>1.6.4</version.slf4j>
+		<version.java>1.6</version.java>
+		<version.ejb>3.1</version.ejb>
+		<version.javaee-api>6.0</version.javaee-api>
+		<version.jboss.as>7.1.0.Final</version.jboss.as>
+		<version.jee>6</version.jee>
+		<version.junit>4.10</version.junit>
+		<version.arquillian-junit-container>1.0.0.CR7</version.arquillian-junit-container>
+		<version.maven-compiler-plugin>2.3.2</version.maven-compiler-plugin>
+		<version.maven-failsafe-plugin>2.12</version.maven-failsafe-plugin>
+		<version.maven-pmd-plugin>2.7</version.maven-pmd-plugin>
+		<version.cobertura-maven-plugin>2.5.1</version.cobertura-maven-plugin>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.ear.defaultLibBundleDir>lib</project.ear.defaultLibBundleDir>
+		<project.ear.Dependencies>org.jboss.logging, org.slf4j</project.ear.Dependencies>
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${version.maven-compiler-plugin}</version>
+				<configuration>
+					<source>${version.java}</source>
+					<target>${version.java}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<version>${version.maven-failsafe-plugin}</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-pmd-plugin</artifactId>
+				<version>${version.maven-pmd-plugin}</version>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>cobertura-maven-plugin</artifactId>
+				<version>${version.cobertura-maven-plugin}</version>
+			</plugin>
+		</plugins>
+	</build>
+
+	<repositories>
+
+		<repository>
+			<id>jboss-public-repository-group</id>
+			<name>JBoss Public Maven Repository Group</name>
+			<url>http://repository.jboss.org/nexus/content/groups/public</url>
+
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</snapshots>
+		</repository>
+
+	</repositories>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${version.slf4j}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<version>${version.slf4j}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>${version.javaee-api}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${version.junit}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.arquillian.junit</groupId>
+			<artifactId>arquillian-junit-container</artifactId>
+			<version>${version.arquillian-junit-container}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.as</groupId>
+			<artifactId>jboss-as-arquillian-container-remote</artifactId>
+			<version>${version.jboss.as}</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+</project>
