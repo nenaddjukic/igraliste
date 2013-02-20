@@ -9,10 +9,12 @@ import javax.ejb.Startup;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.igraliste.api.HomeBean;
+
 @Singleton
 @Startup
-public class HomeBeanImpl {
-	
+@Local(HomeBean.class)
+public class HomeBeanImpl implements HomeBean{
 	Logger log = LoggerFactory.getLogger(HomeBeanImpl.class);
 
 	@PostConstruct
@@ -23,5 +25,11 @@ public class HomeBeanImpl {
 	@PreDestroy
 	public void predestroyHomeBean(){
 		log.debug("Home is in pre destroy");
+	}
+
+	@Override
+	public void sendMessageToConsumer() {
+		// TODO Auto-generated method stub
+		
 	}
 }

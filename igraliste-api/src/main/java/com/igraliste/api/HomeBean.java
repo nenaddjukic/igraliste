@@ -1,6 +1,9 @@
 package com.igraliste.api;
 
-interface HomeBean {
+import javax.ejb.Local;
+
+@Local
+public interface HomeBean {
 	
 	void sendMessageToConsumer();
 	
