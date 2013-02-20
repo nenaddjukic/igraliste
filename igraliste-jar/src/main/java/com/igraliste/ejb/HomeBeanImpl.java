@@ -11,7 +11,6 @@ import org.slf4j.LoggerFactory;
 
 @Singleton
 @Startup
-@Local()
 public class HomeBeanImpl {
 	
 	Logger log = LoggerFactory.getLogger(HomeBeanImpl.class);
