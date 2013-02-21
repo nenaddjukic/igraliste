@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	
+
 	<modelVersion>4.0.0</modelVersion>
-	
+
 	<groupId>com.igraliste.test</groupId>
 	<artifactId>igraliste</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
@@ -25,9 +25,11 @@
 		<version.maven-failsafe-plugin>2.12</version.maven-failsafe-plugin>
 		<version.maven-pmd-plugin>2.7</version.maven-pmd-plugin>
 		<version.cobertura-maven-plugin>2.5.1</version.cobertura-maven-plugin>
+		<infinispan.version>5.1.4.CR1</infinispan.version>
+		<version.cache.api>0.5</version.cache.api>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.ear.defaultLibBundleDir>lib</project.ear.defaultLibBundleDir>
-		<project.ear.Dependencies>org.jboss.logging, org.slf4j</project.ear.Dependencies>
+		<project.ear.Dependencies>org.jboss.logging, org.slf4j, org.infinispan</project.ear.Dependencies>
 	</properties>
 
 	<build>
@@ -60,29 +62,34 @@
 	</build>
 	<dependencyManagement>
 		<dependencies>
-		<dependency>
-			<groupId>com.igraliste.test</groupId>
-			<artifactId>igraliste-api</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.igraliste.test</groupId>
-			<artifactId>igraliste-ear</artifactId>
-			<version>${project.version}</version>
-			<type>ear</type>
-		</dependency>
-		<dependency>
-			<groupId>com.igraliste.test</groupId>
-			<artifactId>igraliste-jar</artifactId>
-			<version>${project.version}</version>
-			<type>ejb</type>
-		</dependency>
-		<dependency>
-			<groupId>com.igraliste.test</groupId>
-			<artifactId>igraliste-war</artifactId>
-			<version>${project.version}</version>
-			<type>war</type>
-		</dependency>
+			<dependency>
+				<groupId>com.igraliste.test</groupId>
+				<artifactId>igraliste-api</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.igraliste.test</groupId>
+				<artifactId>igraliste-ear</artifactId>
+				<version>${project.version}</version>
+				<type>ear</type>
+			</dependency>
+			<dependency>
+				<groupId>com.igraliste.test</groupId>
+				<artifactId>igraliste-jar</artifactId>
+				<version>${project.version}</version>
+				<type>ejb</type>
+			</dependency>
+			<dependency>
+				<groupId>com.igraliste.test</groupId>
+				<artifactId>igraliste-war</artifactId>
+				<version>${project.version}</version>
+				<type>war</type>
+			</dependency>
+			<dependency>
+				<groupId>org.infinispan</groupId>
+				<artifactId>infinispan-cdi</artifactId>
+				<version>${infinispan.version}</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 	<dependencies>
