@@ -1,4 +1,4 @@
-package com.igraliste.ejb.cache;
+package com.igraliste.ejb.util.cache;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;

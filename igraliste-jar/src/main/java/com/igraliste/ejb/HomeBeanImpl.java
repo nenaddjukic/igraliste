@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
 
 import com.igraliste.api.CacheEntity;
 import com.igraliste.api.HomeBean;
-import com.igraliste.ejb.cache.CacheCreator;
+import com.igraliste.ejb.util.cache.CacheCreator;
 
 @Singleton
 @Startup
