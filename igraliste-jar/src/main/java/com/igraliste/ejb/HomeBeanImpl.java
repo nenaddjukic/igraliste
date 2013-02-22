@@ -2,6 +2,7 @@ package com.igraliste.ejb;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import javax.ejb.EJB;
 import javax.ejb.Local;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
@@ -14,6 +15,7 @@ import org.slf4j.LoggerFactory;
 import com.igraliste.api.CacheEntity;
 import com.igraliste.api.HomeBean;
 import com.igraliste.ejb.util.cache.CacheCreator;
+import com.igraliste.ejb.util.jms.JMSLocator;
 
 @Singleton
 @Startup
@@ -23,6 +25,8 @@ public class HomeBeanImpl implements HomeBean {
 
 	@Inject
 	private CacheCreator creator;
+	@Inject
+	private JMSLocator jms;
 
 	@PostConstruct
 	public void initializeHomeBean() {
@@ -30,6 +34,7 @@ public class HomeBeanImpl implements HomeBean {
 		try {
 			CacheEntity entity = new CacheEntity("1", "vrednost");
 			creator.put("1", entity);
+			jms.send("test", entity);
 		} catch (Exception e) {
 			log.error("Error ocured: {}",e);
 		}
