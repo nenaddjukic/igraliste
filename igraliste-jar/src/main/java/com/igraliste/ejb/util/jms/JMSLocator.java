@@ -3,7 +3,6 @@ package com.igraliste.ejb.util.jms;
 import java.io.Serializable;
 
 import javax.ejb.Stateless;
-import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
