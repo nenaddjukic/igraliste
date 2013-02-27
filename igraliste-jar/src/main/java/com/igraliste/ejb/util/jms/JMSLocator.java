@@ -38,6 +38,7 @@ public class JMSLocator implements Serializable{
 		    producer.send(message);
 		    log.debug("Sent TextMessage to the Queue: " + message.getJMSMessageID());
 		    session.close();
+		    con.close();
 		}catch(JMSException e){
 			log.error("JMSException in send message to queue: {}",e);
 		}catch (Exception e) {
