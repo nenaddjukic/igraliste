@@ -1,0 +1,157 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.igraliste.test</groupId>
+		<artifactId>igraliste</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>igraliste-rar</artifactId>
+	<name>[${project.parent.artifactId}] RAR module</name>
+	<packaging>rar</packaging>
+	<build>
+		<sourceDirectory>src/main</sourceDirectory>
+		<testSourceDirectory>src/test</testSourceDirectory>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.5.1</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<excludes>
+						<exclude>**/META-INF/*</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-rar-plugin</artifactId>
+				<version>2.2</version>
+				<executions>
+					<execution>
+						<id>test</id>
+						<goals>
+							<goal>rar</goal>
+						</goals>
+						<configuration>
+							<raXmlFile>src/main/resources/META-INF/ra.xml</raXmlFile>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+		</plugins>
+	</build>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.jboss.ironjacamar</groupId>
+			<artifactId>ironjacamar-spec-api</artifactId>
+			<version>${version.org.jboss.ironjacamar}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.ironjacamar</groupId>
+			<artifactId>ironjacamar-common-api</artifactId>
+			<version>${version.org.jboss.ironjacamar}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.ironjacamar</groupId>
+			<artifactId>ironjacamar-common-spi</artifactId>
+			<version>${version.org.jboss.ironjacamar}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.ironjacamar</groupId>
+			<artifactId>ironjacamar-common-impl</artifactId>
+			<version>${version.org.jboss.ironjacamar}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.ironjacamar</groupId>
+			<artifactId>ironjacamar-common-impl-papaki</artifactId>
+			<version>${version.org.jboss.ironjacamar}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.ironjacamar</groupId>
+			<artifactId>ironjacamar-core-api</artifactId>
+			<version>${version.org.jboss.ironjacamar}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.ironjacamar</groupId>
+			<artifactId>ironjacamar-core-impl</artifactId>
+			<version>${version.org.jboss.ironjacamar}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.ironjacamar</groupId>
+			<artifactId>ironjacamar-depchain</artifactId>
+			<version>${version.org.jboss.ironjacamar}</version>
+			<scope>test</scope>
+			<type>pom</type>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.ironjacamar</groupId>
+			<artifactId>ironjacamar-deployers-common</artifactId>
+			<version>${version.org.jboss.ironjacamar}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.ironjacamar</groupId>
+			<artifactId>ironjacamar-deployers-fungal</artifactId>
+			<version>${version.org.jboss.ironjacamar}</version>
+			<scope>test</scope>
+		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.jboss.ironjacamar</groupId> -->
+<!-- 			<artifactId>ironjacamar-embedded-arquillian</artifactId> -->
+<!-- 			<version>${version.org.jboss.ironjacamar}</version> -->
+<!-- 			<scope>test</scope> -->
+<!-- 		</dependency> -->
+		<dependency>
+			<groupId>org.jboss.ironjacamar</groupId>
+			<artifactId>ironjacamar-embedded</artifactId>
+			<version>${version.org.jboss.ironjacamar}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.ironjacamar</groupId>
+			<artifactId>ironjacamar-validator</artifactId>
+			<version>${version.org.jboss.ironjacamar}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.8.1</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.jboss.ironjacamar</groupId>
+				<artifactId>ironjacamar-depchain</artifactId>
+				<version>${version.org.jboss.ironjacamar}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+</project>

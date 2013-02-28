@@ -66,6 +66,11 @@
 							<bundleFileName>${project.parent.artifactId}-war.war</bundleFileName>
 							<contextRoot>${project.ear.contextRoot}</contextRoot>
 						</webModule>
+						
+						<rarModule>
+							<groupId>${project.groupId}</groupId>
+							<artifactId>${project.parent.artifactId}-rar</artifactId>
+						</rarModule>
 					</modules>
 				</configuration>
 			</plugin>
@@ -87,6 +92,13 @@
 			<artifactId>${project.parent.artifactId}-war</artifactId>
 			<version>${project.version}</version>
 			<type>war</type>
+		</dependency>
+		
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>${project.parent.artifactId}-rar</artifactId>
+			<version>${project.version}</version>
+			<type>rar</type>
 		</dependency>
 	</dependencies>
 </project>

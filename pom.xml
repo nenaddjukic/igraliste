@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 
@@ -20,7 +19,7 @@
 		<version.jboss.as>7.1.0.Final</version.jboss.as>
 		<version.jee>6</version.jee>
 		<version.junit>4.10</version.junit>
-		<version.arquillian-junit-container>1.0.0.CR7</version.arquillian-junit-container>
+		<version.arquillian-junit-container>1.0.3.Final</version.arquillian-junit-container>
 		<version.maven-compiler-plugin>2.3.2</version.maven-compiler-plugin>
 		<version.maven-failsafe-plugin>2.12</version.maven-failsafe-plugin>
 		<version.maven-pmd-plugin>2.7</version.maven-pmd-plugin>
@@ -29,6 +28,7 @@
 		<version.cache.api>0.5</version.cache.api>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.ear.defaultLibBundleDir>lib</project.ear.defaultLibBundleDir>
+		<version.org.jboss.ironjacamar>1.0.15.Final</version.org.jboss.ironjacamar>
 		<project.ear.Dependencies>org.jboss.logging, org.slf4j, org.infinispan</project.ear.Dependencies>
 	</properties>
 
@@ -156,5 +156,6 @@
 		<module>igraliste-jar</module>
 		<module>igraliste-api</module>
 		<module>igraliste-war</module>
-	</modules>
+    <module>igraliste-rar</module>
+  </modules>
 </project>
