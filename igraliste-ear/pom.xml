@@ -67,11 +67,11 @@
 							<contextRoot>${project.ear.contextRoot}</contextRoot>
 						</webModule>
 						
-						<jarModule>
+						<rarModule>
 							<groupId>${project.groupId}</groupId>
-							<artifactId>${project.parent.artifactId}-rar</artifactId>
-							<bundleFileName>${project.parent.artifactId}-jca.jar</bundleFileName>
-						</jarModule>
+							<artifactId>${project.parent.artifactId}-jca-rar</artifactId>
+							<bundleFileName>${project.parent.artifactId}-jca-rar.rar</bundleFileName>
+						</rarModule>
 					</modules>
 				</configuration>
 			</plugin>
@@ -97,9 +97,9 @@
 		
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>${project.parent.artifactId}-rar</artifactId>
+			<artifactId>${project.parent.artifactId}-jca-rar</artifactId>
 			<version>${project.version}</version>
-			<type>jar</type>
+			<type>rar</type>
 		</dependency>
 	</dependencies>
 </project>
