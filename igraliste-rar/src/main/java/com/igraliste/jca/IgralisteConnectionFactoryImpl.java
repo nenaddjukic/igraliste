@@ -19,7 +19,7 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
-package com.igraliste.rar;
+package com.igraliste.jca;
 
 import java.util.logging.Logger;
 
@@ -76,7 +76,7 @@ public class IgralisteConnectionFactoryImpl implements IgralisteConnectionFactor
     * @return IgralisteConnection instance
     * @exception ResourceException Thrown if a connection can't be obtained
     */
-
+   @Override
    public IgralisteConnection getConnection() throws ResourceException
    {
       log.finest("getConnection()");
@@ -89,7 +89,7 @@ public class IgralisteConnectionFactoryImpl implements IgralisteConnectionFactor
     * @return Reference instance
     * @exception NamingException Thrown if a reference can't be obtained
     */
-
+   @Override
    public Reference getReference() throws NamingException
    {
       log.finest("getReference()");
@@ -101,7 +101,7 @@ public class IgralisteConnectionFactoryImpl implements IgralisteConnectionFactor
     *
     * @param reference A Reference instance
     */
-
+   @Override
    public void setReference(Reference reference)
    {
       log.finest("setReference()");

@@ -19,21 +19,21 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
-package com.igraliste.rar;
+package com.igraliste.jca;
 
 import javax.resource.cci.ResourceAdapterMetaData;
 
 /**
- * AcmeRaMetaData
+ * IgralisteRaMetaData
  *
  * @version $Revision: $
  */
-public class AcmeRaMetaData implements ResourceAdapterMetaData
+public class IgralisteRaMetaData implements ResourceAdapterMetaData
 {
    /**
     * Default constructor
     */
-   public AcmeRaMetaData()
+   public IgralisteRaMetaData()
    {
 
    }
@@ -43,7 +43,7 @@ public class AcmeRaMetaData implements ResourceAdapterMetaData
     *
     * @return String representing version of the resource adapter
     */
-
+   @Override
    public String getAdapterVersion()
    {
       return null; //TODO
@@ -54,7 +54,7 @@ public class AcmeRaMetaData implements ResourceAdapterMetaData
     *
     * @return String representing name of the vendor 
     */
-
+   @Override
    public String getAdapterVendorName()
    {
       return null; //TODO
@@ -65,7 +65,7 @@ public class AcmeRaMetaData implements ResourceAdapterMetaData
     *
     * @return String representing the name of the resource adapter
     */
-
+   @Override
    public String getAdapterName()
    {
       return null; //TODO
@@ -76,7 +76,7 @@ public class AcmeRaMetaData implements ResourceAdapterMetaData
     *
     * @return String describing the resource adapter
     */
-
+   @Override
    public String getAdapterShortDescription()
    {
       return null; //TODO
@@ -87,7 +87,7 @@ public class AcmeRaMetaData implements ResourceAdapterMetaData
     *
     * @return String representing the supported version of the connector architecture
     */
-
+   @Override
    public String getSpecVersion()
    {
       return null; //TODO
@@ -98,7 +98,7 @@ public class AcmeRaMetaData implements ResourceAdapterMetaData
     *
     * @return Array of fully-qualified class names of InteractionSpec classes
     */
-
+   @Override
    public String[] getInteractionSpecsSupported()
    {
       return null; //TODO
@@ -109,7 +109,7 @@ public class AcmeRaMetaData implements ResourceAdapterMetaData
     *
     * @return boolean Depending on method support
     */
-
+   @Override
    public boolean supportsExecuteWithInputAndOutputRecord()
    {
       return false; //TODO
@@ -120,7 +120,7 @@ public class AcmeRaMetaData implements ResourceAdapterMetaData
     *
     * @return boolean Depending on method support
     */
-
+   @Override
    public boolean supportsExecuteWithInputRecordOnly()
    {
       return false; //TODO
@@ -131,7 +131,7 @@ public class AcmeRaMetaData implements ResourceAdapterMetaData
     *
     * @return true If resource adapter supports resource manager local transaction demarcation 
     */
-
+   @Override
    public boolean supportsLocalTransactionDemarcation()
    {
       return false; //TODO

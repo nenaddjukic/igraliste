@@ -30,7 +30,7 @@
   <transaction-support>NoTransaction</transaction-support>
   
   <connection-definitions>
-    <connection-definition class-name="com.igraliste.rar.IgralisteManagedConnectionFactory" jndi-name="java:/eis/IgralisteConnectionFactory" pool-name="IgralisteConnectionFactory">
+    <connection-definition class-name="com.igraliste.jca.IgralisteManagedConnectionFactory" jndi-name="java:/eis/IgralisteConnectionFactory" pool-name="IgralisteConnectionFactory">
     </connection-definition>
   </connection-definitions>
 

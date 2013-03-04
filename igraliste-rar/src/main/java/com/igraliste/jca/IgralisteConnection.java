@@ -1,4 +1,3 @@
-<!--
 /*
  * JBoss, Home of Professional Open Source.
  * Copyright 2012, Red Hat Middleware LLC, and individual contributors
@@ -20,12 +19,21 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
--->
+package com.igraliste.jca;
 
-<deployment>
-  <bean name="Acme" interface="com.igraliste.rar.AcmeMBean" class="com.igraliste.rar.AcmeMBeanImpl">
-    <property name="MBeanServer">
-        <inject bean="Kernel" property="MBeanServer"/>
-    </property>
-  </bean>
-</deployment>
+/**
+ * IgralisteConnection
+ *
+ * @version $Revision: $
+ */
+public interface IgralisteConnection
+{
+   /**
+    * Call me
+    */
+   public void callMe();
+   /**
+    * Close
+    */
+   public void close();
+}

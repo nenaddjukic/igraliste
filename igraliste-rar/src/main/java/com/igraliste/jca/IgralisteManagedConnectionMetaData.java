@@ -19,7 +19,7 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
-package com.igraliste.rar;
+package com.igraliste.jca;
 
 import java.util.logging.Logger;
 
@@ -28,19 +28,19 @@ import javax.resource.ResourceException;
 import javax.resource.spi.ManagedConnectionMetaData;
 
 /**
- * AcmeManagedConnectionMetaData
+ * IgralisteManagedConnectionMetaData
  *
  * @version $Revision: $
  */
-public class AcmeManagedConnectionMetaData implements ManagedConnectionMetaData
+public class IgralisteManagedConnectionMetaData implements ManagedConnectionMetaData
 {
    /** The logger */
-   private static Logger log = Logger.getLogger("AcmeManagedConnectionMetaData");
+   private static Logger log = Logger.getLogger("IgralisteManagedConnectionMetaData");
 
    /**
     * Default constructor
     */
-   public AcmeManagedConnectionMetaData()
+   public IgralisteManagedConnectionMetaData()
    {
 
    }
@@ -51,7 +51,7 @@ public class AcmeManagedConnectionMetaData implements ManagedConnectionMetaData
     * @return Product name of the EIS instance
     * @throws ResourceException Thrown if an error occurs
     */
-
+   @Override
    public String getEISProductName() throws ResourceException
    {
       log.finest("getEISProductName()");
@@ -64,7 +64,7 @@ public class AcmeManagedConnectionMetaData implements ManagedConnectionMetaData
     * @return Product version of the EIS instance
     * @throws ResourceException Thrown if an error occurs
     */
-
+   @Override
    public String getEISProductVersion() throws ResourceException
    {
       log.finest("getEISProductVersion()");
@@ -77,7 +77,7 @@ public class AcmeManagedConnectionMetaData implements ManagedConnectionMetaData
     * @return Maximum limit for number of active concurrent connections
     * @throws ResourceException Thrown if an error occurs
     */
-
+   @Override
    public int getMaxConnections() throws ResourceException
    {
       log.finest("getMaxConnections()");
@@ -90,7 +90,7 @@ public class AcmeManagedConnectionMetaData implements ManagedConnectionMetaData
     * @return Name of the user
     * @throws ResourceException Thrown if an error occurs
     */
-
+   @Override
    public String getUserName() throws ResourceException
    {
       log.finest("getUserName()");

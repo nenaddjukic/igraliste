@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 
@@ -13,7 +14,7 @@
 	<properties>
 		<version.weld>1.1.5.Final</version.weld>
 		<version.slf4j>1.6.4</version.slf4j>
-		<version.java>1.6</version.java>
+		<version.java>1.7</version.java>
 		<version.ejb>3.1</version.ejb>
 		<version.javaee-api>6.0</version.javaee-api>
 		<version.jboss.as>7.1.0.Final</version.jboss.as>
@@ -90,6 +91,12 @@
 				<artifactId>infinispan-cdi</artifactId>
 				<version>${infinispan.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${version.junit}</version>
+				<scope>test</scope>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 	<dependencies>
@@ -112,12 +119,6 @@
 			<artifactId>javaee-api</artifactId>
 			<version>${version.javaee-api}</version>
 			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>${version.junit}</version>
-			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.jboss.arquillian.junit</groupId>
@@ -156,6 +157,6 @@
 		<module>igraliste-jar</module>
 		<module>igraliste-api</module>
 		<module>igraliste-war</module>
-    <module>igraliste-rar</module>
-  </modules>
+		<module>igraliste-rar</module>
+	</modules>
 </project>

@@ -19,25 +19,23 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
-package com.igraliste.rar.mbean;
-
-import com.igraliste.rar.IgralisteConnection;
-import com.igraliste.rar.IgralisteConnectionFactory;
+package com.igraliste.jca.mbean;
 
 import javax.management.MBeanServer;
 import javax.management.ObjectName;
 import javax.naming.InitialContext;
 
+import com.igraliste.jca.*;
 
 /**
- * AcmeMBeanImpl
+ * IgralisteMBeanImpl
  *
  * @version $Revision: $
  */
-public class AcmeMBeanImpl implements AcmeMBean
+public class IgralisteMBeanImpl implements IgralisteMBean
 {
    /** JNDI name */
-   private static final String JNDI_NAME = "java:/eis/Acme";
+   private static final String JNDI_NAME = "java:/eis/Igraliste";
 
    /** MBeanServer instance */
    private MBeanServer mbeanServer;
@@ -88,6 +86,7 @@ public class AcmeMBeanImpl implements AcmeMBean
     * Call me
     * @throws Exception exception
     */
+   @Override
    public void callMe() throws Exception
    {
       getConnection().callMe();

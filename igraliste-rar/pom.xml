@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
-<project
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
-	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.igraliste.test</groupId>
@@ -10,7 +9,22 @@
 	</parent>
 	<artifactId>igraliste-rar</artifactId>
 	<name>[${project.parent.artifactId}] RAR module</name>
-	<packaging>rar</packaging>
+	<url>http://repository.jboss.org</url>
+	<properties>
+		<version.org.jboss.ironjacamar>1.0.15.Final</version.org.jboss.ironjacamar>
+	</properties>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.jboss.ironjacamar</groupId>
+				<artifactId>ironjacamar-depchain</artifactId>
+				<version>${version.org.jboss.ironjacamar}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
 	<build>
 		<sourceDirectory>src/main</sourceDirectory>
 		<testSourceDirectory>src/test</testSourceDirectory>
@@ -20,7 +34,6 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.5.1</version>
 			</plugin>
-
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
@@ -31,7 +44,6 @@
 					</excludes>
 				</configuration>
 			</plugin>
-
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-rar-plugin</artifactId>
@@ -48,12 +60,9 @@
 					</execution>
 				</executions>
 			</plugin>
-
 		</plugins>
 	</build>
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.jboss.ironjacamar</groupId>
@@ -134,24 +143,10 @@
 			<version>${version.org.jboss.ironjacamar}</version>
 			<scope>test</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.8.1</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.jboss.ironjacamar</groupId>
-				<artifactId>ironjacamar-depchain</artifactId>
-				<version>${version.org.jboss.ironjacamar}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
 </project>

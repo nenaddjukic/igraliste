@@ -19,7 +19,7 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
-package com.igraliste.rar;
+package com.igraliste.jca;
 
 import java.io.PrintWriter;
 
@@ -229,7 +229,7 @@ public class IgralisteManagedConnection implements ManagedConnection
    public ManagedConnectionMetaData getMetaData() throws ResourceException
    {
       log.finest("getMetaData()");
-      return new AcmeManagedConnectionMetaData();
+      return new IgralisteManagedConnectionMetaData();
    }
 
    /**

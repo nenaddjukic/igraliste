@@ -1,4 +1,3 @@
-<!--
 /*
  * JBoss, Home of Professional Open Source.
  * Copyright 2012, Red Hat Middleware LLC, and individual contributors
@@ -20,12 +19,51 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
--->
+package com.igraliste.jca;
 
-<deployment>
-  <bean name="Acme" interface="com.igraliste.rar.AcmeMBean" class="com.igraliste.rar.AcmeMBeanImpl">
-    <property name="MBeanServer">
-        <inject bean="Kernel" property="MBeanServer"/>
-    </property>
-  </bean>
-</deployment>
+import java.util.logging.Logger;
+
+/**
+ * IgralisteConnectionImpl
+ *
+ * @version $Revision: $
+ */
+public class IgralisteConnectionImpl implements IgralisteConnection
+{
+   /** The logger */
+   private static Logger log = Logger.getLogger("IgralisteConnectionImpl");
+
+   /** ManagedConnection */
+   private IgralisteManagedConnection mc;
+
+   /** ManagedConnectionFactory */
+   private IgralisteManagedConnectionFactory mcf;
+
+   /**
+    * Default constructor
+    * @param mc IgralisteManagedConnection
+    * @param mcf IgralisteManagedConnectionFactory
+    */
+   public IgralisteConnectionImpl(IgralisteManagedConnection mc, IgralisteManagedConnectionFactory mcf)
+   {
+      this.mc = mc;
+      this.mcf = mcf;
+   }
+
+   /**
+    * Call me
+    */
+   public void callMe()
+   {
+      mc.callMe();
+   }
+
+   /**
+    * Close
+    */
+   public void close()
+   {
+      mc.closeHandle(this);
+   }
+
+}

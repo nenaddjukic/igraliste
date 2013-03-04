@@ -19,13 +19,14 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
-package com.igraliste.rar;
+package com.igraliste.jca;
 
 import java.util.logging.Logger;
 
 import javax.resource.ResourceException;
 import javax.resource.spi.ActivationSpec;
 import javax.resource.spi.BootstrapContext;
+import javax.resource.spi.ConfigProperty;
 import javax.resource.spi.Connector;
 import javax.resource.spi.ResourceAdapter;
 import javax.resource.spi.ResourceAdapterInternalException;
@@ -35,26 +36,26 @@ import javax.resource.spi.endpoint.MessageEndpointFactory;
 import javax.transaction.xa.XAResource;
 
 /**
- * IgralisteRA
+ * IgralisteResourceAdapter
  *
  * @version $Revision: $
  */
 @Connector(
    reauthenticationSupport = false,
    transactionSupport = TransactionSupport.TransactionSupportLevel.NoTransaction)
-public class IgralisteRA implements ResourceAdapter, java.io.Serializable
+public class IgralisteResourceAdapter implements ResourceAdapter, java.io.Serializable
 {
 
    /** The serial version UID */
    private static final long serialVersionUID = 1L;
 
    /** The logger */
-   private static Logger log = Logger.getLogger("IgralisteRA");
+   private static Logger log = Logger.getLogger("IgralisteResourceAdapter");
 
    /**
     * Default constructor
     */
-   public IgralisteRA()
+   public IgralisteResourceAdapter()
    {
 
    }
@@ -142,9 +143,9 @@ public class IgralisteRA implements ResourceAdapter, java.io.Serializable
          return false;
       if (other == this)
          return true;
-      if (!(other instanceof IgralisteRA))
+      if (!(other instanceof IgralisteResourceAdapter))
          return false;
-      IgralisteRA obj = (IgralisteRA)other;
+      IgralisteResourceAdapter obj = (IgralisteResourceAdapter)other;
       boolean result = true; 
       return result;
    }
