@@ -37,55 +37,58 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import static org.junit.Assert.*;
 
-import com.igraliste.jca.*;
-
 /**
  * ConnectorTestCase
- *
+ * 
  * @version $Revision: $
  */
 @RunWith(Arquillian.class)
-public class ConnectorTestCase
-{
-   private static Logger log = Logger.getLogger("ConnectorTestCase");
+public class ConnectorTestCase {
+	private static Logger log = Logger.getLogger("ConnectorTestCase");
 
-   private static String deploymentName = "ConnectorTestCase";
+	private static String deploymentName = "ConnectorTestCase";
 
-   /**
-    * Define the deployment
-    *
-    * @return The deployment archive
-    */
-   @Deployment
-   public static ResourceAdapterArchive createDeployment()
-   {
-      ResourceAdapterArchive raa =
-         ShrinkWrap.create(ResourceAdapterArchive.class, deploymentName + ".rar");
-      JavaArchive ja = ShrinkWrap.create(JavaArchive.class, UUID.randomUUID().toString() + ".jar");
-      ja.addClasses(IgralisteResourceAdapter.class, IgralisteManagedConnectionFactory.class, IgralisteManagedConnection.class, IgralisteConnectionFactory.class, IgralisteConnectionFactoryImpl.class, IgralisteConnection.class, IgralisteConnectionImpl.class);
-      raa.addAsLibrary(ja);
+	/**
+	 * Define the deployment
+	 * 
+	 * @return The deployment archive
+	 */
+	@Deployment
+	public static ResourceAdapterArchive createDeployment() {
+		ResourceAdapterArchive raa = ShrinkWrap.create(
+				ResourceAdapterArchive.class, deploymentName + ".rar");
+		JavaArchive ja = ShrinkWrap.create(JavaArchive.class, UUID.randomUUID()
+				.toString() + ".jar");
+		ja.addClasses(IgralisteResourceAdapter.class,
+				IgralisteManagedConnectionFactory.class,
+				IgralisteManagedConnection.class,
+				IgralisteConnectionFactory.class,
+				IgralisteConnectionFactoryImpl.class,
+				IgralisteConnection.class, IgralisteConnectionImpl.class);
+		raa.addAsLibrary(ja);
 
-      raa.addAsManifestResource("META-INF/ironjacamar.xml", "ironjacamar.xml");
+		raa.addAsManifestResource("META-INF/ironjacamar.xml", "ironjacamar.xml");
 
-      return raa;
-   }
+		return raa;
+	}
 
-   /** Resource */
-   @Resource(mappedName = "java:/eis/IgralisteConnectionFactory")
-   private IgralisteConnectionFactory connectionFactory1;
+	/** Resource */
+	@Resource(mappedName = "java:/eis/IgralisteConnectionFactory")
+	private IgralisteConnectionFactory connectionFactory1;
 
-   /**
-    * Test getConnection
-    *
-    * @exception Throwable Thrown if case of an error
-    */
-   @Test
-   public void testGetConnection1() throws Throwable
-   {
-      assertNotNull(connectionFactory1);
-      IgralisteConnection connection1 = connectionFactory1.getConnection();
-      assertNotNull(connection1);
-      connection1.close();
-   }
+	/**
+	 * Test getConnection
+	 * 
+	 * @exception Throwable
+	 *                Thrown if case of an error
+	 */
+	@Test
+	public void testGetConnection1() throws Throwable {
+		log.fine("Start test");
+		assertNotNull(connectionFactory1);
+		IgralisteConnection connection1 = connectionFactory1.getConnection();
+		assertNotNull(connection1);
+		connection1.close();
+	}
 
 }

@@ -124,7 +124,7 @@ public class IgralisteManagedConnectionFactory implements ManagedConnectionFacto
    {
       log.finest("matchManagedConnections()");
       ManagedConnection result = null;
-      Iterator it = connectionSet.iterator();
+      Iterator<?> it = connectionSet.iterator();
       while (result == null && it.hasNext())
       {
          ManagedConnection mc = (ManagedConnection)it.next();
