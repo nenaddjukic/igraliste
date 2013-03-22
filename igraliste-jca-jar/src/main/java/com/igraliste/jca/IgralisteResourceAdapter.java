@@ -26,7 +26,6 @@ import java.util.logging.Logger;
 import javax.resource.ResourceException;
 import javax.resource.spi.ActivationSpec;
 import javax.resource.spi.BootstrapContext;
-import javax.resource.spi.ConfigProperty;
 import javax.resource.spi.Connector;
 import javax.resource.spi.ResourceAdapter;
 import javax.resource.spi.ResourceAdapterInternalException;
@@ -145,7 +144,6 @@ public class IgralisteResourceAdapter implements ResourceAdapter, java.io.Serial
          return true;
       if (!(other instanceof IgralisteResourceAdapter))
          return false;
-      IgralisteResourceAdapter obj = (IgralisteResourceAdapter)other;
       boolean result = true; 
       return result;
    }

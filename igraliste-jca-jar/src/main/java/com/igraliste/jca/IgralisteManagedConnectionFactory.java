@@ -28,7 +28,6 @@ import java.util.Set;
 import java.util.logging.Logger;
 
 import javax.resource.ResourceException;
-import javax.resource.spi.ConfigProperty;
 import javax.resource.spi.ConnectionDefinition;
 import javax.resource.spi.ConnectionManager;
 import javax.resource.spi.ConnectionRequestInfo;
@@ -208,7 +207,6 @@ public class IgralisteManagedConnectionFactory implements ManagedConnectionFacto
          return true;
       if (!(other instanceof IgralisteManagedConnectionFactory))
          return false;
-      IgralisteManagedConnectionFactory obj = (IgralisteManagedConnectionFactory)other;
       boolean result = true; 
       return result;
    }

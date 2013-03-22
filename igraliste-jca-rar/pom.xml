@@ -9,7 +9,7 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>igraliste-jca-rar</artifactId>
-	<name>igraliste-jca-rar</name>
+	<name>[${project.parent.artifactId}] JCA-RAR module</name>
 	<packaging>rar</packaging>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -35,6 +35,15 @@
 		<dependency>
 			<groupId>com.igraliste.test</groupId>
 			<artifactId>igraliste-jca-jar</artifactId>
+		</dependency>
+				<!-- CAMEL -->
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-jms</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-core</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>

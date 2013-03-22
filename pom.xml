@@ -29,6 +29,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.ear.defaultLibBundleDir>lib</project.ear.defaultLibBundleDir>
 		<version.org.jboss.ironjacamar>1.0.15.Final</version.org.jboss.ironjacamar>
+		<version.camel>2.10.4</version.camel>
 		<project.ear.Dependencies>org.jboss.logging, org.slf4j, org.infinispan</project.ear.Dependencies>
 	</properties>
 
@@ -96,6 +97,17 @@
 				<artifactId>igraliste-jca-rar</artifactId>
 				<version>${project.version}</version>
 				<type>rar</type>
+			</dependency>
+			<!-- EXTERNAL -->
+			<dependency>
+				<groupId>org.apache.camel</groupId>
+				<artifactId>camel-jms</artifactId>
+				<version>${version.camel}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.camel</groupId>
+				<artifactId>camel-core</artifactId>
+				<version>${version.camel}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.infinispan</groupId>

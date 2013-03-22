@@ -237,7 +237,7 @@ public class IgralisteManagedConnection implements ManagedConnection
     */
    void callMe()
    {
-      log.finest("callMe()");
+      log.finest("callMe() Managed Connection");
    }
 
 }

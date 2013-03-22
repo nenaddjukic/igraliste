@@ -21,49 +21,58 @@
  */
 package com.igraliste.jca;
 
-import java.util.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * IgralisteConnectionImpl
- *
+ * 
  * @version $Revision: $
  */
-public class IgralisteConnectionImpl implements IgralisteConnection
-{
-   /** The logger */
-   private static Logger log = Logger.getLogger("IgralisteConnectionImpl");
+public class IgralisteConnectionImpl implements IgralisteConnection {
+	/** The logger */
+	private static Logger log = LoggerFactory
+			.getLogger(IgralisteConnectionImpl.class);
 
-   /** ManagedConnection */
-   private IgralisteManagedConnection mc;
+	/** ManagedConnection */
+	private IgralisteManagedConnection mc;
 
-   /** ManagedConnectionFactory */
-   private IgralisteManagedConnectionFactory mcf;
+	/** ManagedConnectionFactory */
+	private IgralisteManagedConnectionFactory mcf;
 
-   /**
-    * Default constructor
-    * @param mc IgralisteManagedConnection
-    * @param mcf IgralisteManagedConnectionFactory
-    */
-   public IgralisteConnectionImpl(IgralisteManagedConnection mc, IgralisteManagedConnectionFactory mcf)
-   {
-      this.mc = mc;
-      this.mcf = mcf;
-   }
+	/**
+	 * Default constructor
+	 * 
+	 * @param mc
+	 *            IgralisteManagedConnection
+	 * @param mcf
+	 *            IgralisteManagedConnectionFactory
+	 */
+	public IgralisteConnectionImpl(IgralisteManagedConnection mc,
+			IgralisteManagedConnectionFactory mcf) {
+		this.mc = mc;
+		this.mcf = mcf;
+	}
 
-   /**
-    * Call me
-    */
-   public void callMe()
-   {
-      mc.callMe();
-   }
+	/**
+	 * Call me
+	 */
+	public void callMe() {
+		log.debug("Call me has been reached");
+		mc.callMe();
+	}
 
-   /**
-    * Close
-    */
-   public void close()
-   {
-      mc.closeHandle(this);
-   }
+	/**
+	 * Close
+	 */
+	public void close() {
+		log.debug("Closing connection Impl");
+		mc.closeHandle(this);
+	}
+
+	@Override
+	public void sendMessage(String message) {
+		System.out.println("Message received: "+message);
+	}
 
 }

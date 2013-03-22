@@ -36,4 +36,6 @@ public interface IgralisteConnection
     * Close
     */
    public void close();
+   
+   public void sendMessage(String message);
 }

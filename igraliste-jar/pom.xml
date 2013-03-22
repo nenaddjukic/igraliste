@@ -38,6 +38,10 @@
 			<groupId>com.igraliste.test</groupId>
 			<artifactId>igraliste-api</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.igraliste.test</groupId>
+			<artifactId>igraliste-jca-jar</artifactId>
+		</dependency>
 		<!-- INFINSPAN -->
 		<dependency>
 			<groupId>org.infinispan</groupId>
