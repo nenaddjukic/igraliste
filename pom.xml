@@ -90,7 +90,6 @@
 				<groupId>com.igraliste.test</groupId>
 				<artifactId>igraliste-jca-jar</artifactId>
 				<version>${project.version}</version>
-				<type>jar</type>
 			</dependency>
 			<dependency>
 				<groupId>com.igraliste.test</groupId>

@@ -36,10 +36,12 @@ import javax.resource.spi.ConnectionManager;
  */
 public class IgralisteConnectionFactoryImpl implements IgralisteConnectionFactory
 {
-   /** The serial version UID */
-   private static final long serialVersionUID = 1L;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1057055706148113318L;
 
-   /** The logger */
+/** The logger */
    private static Logger log = Logger.getLogger("IgralisteConnectionFactoryImpl");
 
    /** Reference */

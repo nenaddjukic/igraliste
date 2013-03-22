@@ -37,10 +37,12 @@
 		<dependency>
 			<groupId>com.igraliste.test</groupId>
 			<artifactId>igraliste-api</artifactId>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.igraliste.test</groupId>
 			<artifactId>igraliste-jca-jar</artifactId>
+			<scope>provided</scope>
 		</dependency>
 		<!-- INFINSPAN -->
 		<dependency>
