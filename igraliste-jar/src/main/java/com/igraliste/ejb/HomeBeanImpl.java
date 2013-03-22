@@ -17,7 +17,6 @@ import com.igraliste.ejb.util.jms.JMSLocator;
 import com.igraliste.ejb.util.rmi.JndiLocator;
 import com.igraliste.jca.IgralisteConnection;
 import com.igraliste.jca.IgralisteConnectionFactory;
-import com.igraliste.jca.IgralisteConnectionFactoryImpl;
 
 @Singleton
 @Startup
@@ -31,8 +30,7 @@ public class HomeBeanImpl implements HomeBean {
 	private JndiLocator jndi;
 	@Inject
 	private JMSLocator jms;
-	
-	//@Resource(mappedName = "java:/eis/IgralisteConnectionFactory")
+
 	private IgralisteConnectionFactory connectionFactory1;
 
 	@PostConstruct
@@ -42,7 +40,7 @@ public class HomeBeanImpl implements HomeBean {
 			CacheEntity entity = new CacheEntity("1", "vrednost");
 			creator.put("1", entity);
 			jms.send("test", entity);
-			connectionFactory1 = (IgralisteConnectionFactoryImpl) jndi.lookup("java:/eis/IgralisteConnectionFactory");
+			connectionFactory1 = (IgralisteConnectionFactory) jndi.lookup("java:/eis/IgralisteConnectionFactory");
 			log.debug("Test:"+connectionFactory1);
 			IgralisteConnection connection = connectionFactory1.getConnection();
 			connection.sendMessage("LALA");
