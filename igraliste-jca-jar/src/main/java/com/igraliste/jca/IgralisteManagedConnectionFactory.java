@@ -25,8 +25,6 @@ import java.io.PrintWriter;
 import java.util.Iterator;
 import java.util.Set;
 
-import java.util.logging.Logger;
-
 import javax.resource.ResourceException;
 import javax.resource.spi.ConnectionDefinition;
 import javax.resource.spi.ConnectionManager;
@@ -37,6 +35,9 @@ import javax.resource.spi.ResourceAdapter;
 import javax.resource.spi.ResourceAdapterAssociation;
 
 import javax.security.auth.Subject;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * IgralisteManagedConnectionFactory
@@ -54,7 +55,7 @@ public class IgralisteManagedConnectionFactory implements ManagedConnectionFacto
    private static final long serialVersionUID = 1L;
 
    /** The logger */
-   private static Logger log = Logger.getLogger("IgralisteManagedConnectionFactory");
+   private Logger log = LoggerFactory.getLogger(IgralisteManagedConnectionFactory.class);
 
    /** The resource adapter */
    private ResourceAdapter ra;
@@ -79,7 +80,7 @@ public class IgralisteManagedConnectionFactory implements ManagedConnectionFacto
     */
    public Object createConnectionFactory(ConnectionManager cxManager) throws ResourceException
    {
-      log.finest("createConnectionFactory()");
+      log.debug("createConnectionFactory()");
       return new IgralisteConnectionFactoryImpl(this, cxManager);
    }
 
@@ -105,7 +106,7 @@ public class IgralisteManagedConnectionFactory implements ManagedConnectionFacto
    public ManagedConnection createManagedConnection(Subject subject,
          ConnectionRequestInfo cxRequestInfo) throws ResourceException
    {
-      log.finest("createManagedConnection()");
+      log.debug("createManagedConnection()");
       return new IgralisteManagedConnection(this);
    }
 
@@ -121,7 +122,7 @@ public class IgralisteManagedConnectionFactory implements ManagedConnectionFacto
    public ManagedConnection matchManagedConnections(Set connectionSet,
          Subject subject, ConnectionRequestInfo cxRequestInfo) throws ResourceException
    {
-      log.finest("matchManagedConnections()");
+      log.debug("matchManagedConnections()");
       ManagedConnection result = null;
       Iterator<?> it = connectionSet.iterator();
       while (result == null && it.hasNext())
@@ -144,7 +145,7 @@ public class IgralisteManagedConnectionFactory implements ManagedConnectionFacto
     */
    public PrintWriter getLogWriter() throws ResourceException
    {
-      log.finest("getLogWriter()");
+      log.debug("getLogWriter()");
       return logwriter;
    }
 
@@ -156,7 +157,7 @@ public class IgralisteManagedConnectionFactory implements ManagedConnectionFacto
     */
    public void setLogWriter(PrintWriter out) throws ResourceException
    {
-      log.finest("setLogWriter()");
+      log.debug("setLogWriter()");
       logwriter = out;
    }
 
@@ -167,7 +168,7 @@ public class IgralisteManagedConnectionFactory implements ManagedConnectionFacto
     */
    public ResourceAdapter getResourceAdapter()
    {
-      log.finest("getResourceAdapter()");
+      log.debug("getResourceAdapter()");
       return ra;
    }
 
@@ -178,7 +179,7 @@ public class IgralisteManagedConnectionFactory implements ManagedConnectionFacto
     */
    public void setResourceAdapter(ResourceAdapter ra)
    {
-      log.finest("setResourceAdapter()");
+      log.debug("setResourceAdapter()");
       this.ra = ra;
    }
 

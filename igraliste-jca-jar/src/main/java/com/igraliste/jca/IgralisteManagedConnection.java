@@ -26,7 +26,6 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.logging.Logger;
 
 import javax.resource.NotSupportedException;
 import javax.resource.ResourceException;
@@ -40,6 +39,11 @@ import javax.resource.spi.ManagedConnectionMetaData;
 import javax.security.auth.Subject;
 import javax.transaction.xa.XAResource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.igraliste.jca.camel.CamelEngine;
+
 /**
  * IgralisteManagedConnection
  *
@@ -49,7 +53,7 @@ public class IgralisteManagedConnection implements ManagedConnection
 {
 
    /** The logger */
-   private static Logger log = Logger.getLogger("IgralisteManagedConnection");
+   private static Logger log = LoggerFactory.getLogger(IgralisteManagedConnection.class);
 
    /** The logwriter */
    private PrintWriter logwriter;
@@ -62,6 +66,9 @@ public class IgralisteManagedConnection implements ManagedConnection
 
    /** Connection */
    private IgralisteConnectionImpl connection;
+   
+   /** Camel */
+   private CamelEngine engine;
 
    /**
     * Default constructor
@@ -73,6 +80,7 @@ public class IgralisteManagedConnection implements ManagedConnection
       this.logwriter = null;
       this.listeners = Collections.synchronizedList(new ArrayList<ConnectionEventListener>(1));
       this.connection = null;
+      this.engine = new CamelEngine();
    }
 
    /**
@@ -87,7 +95,7 @@ public class IgralisteManagedConnection implements ManagedConnection
    public Object getConnection(Subject subject,
       ConnectionRequestInfo cxRequestInfo) throws ResourceException
    {
-      log.finest("getConnection()");
+      log.debug("getConnection()");
       connection = new IgralisteConnectionImpl(this, mcf);
       return connection;
    }
@@ -101,7 +109,7 @@ public class IgralisteManagedConnection implements ManagedConnection
     */
    public void associateConnection(Object connection) throws ResourceException
    {
-      log.finest("associateConnection()");
+      log.debug("associateConnection()");
 
       if (connection == null)
          throw new ResourceException("Null connection handle");
@@ -119,7 +127,7 @@ public class IgralisteManagedConnection implements ManagedConnection
     */
    public void cleanup() throws ResourceException
    {
-      log.finest("cleanup()");
+      log.debug("cleanup()");
    }
 
    /**
@@ -129,7 +137,7 @@ public class IgralisteManagedConnection implements ManagedConnection
     */
    public void destroy() throws ResourceException
    {
-      log.finest("destroy()");
+      log.debug("destroy()");
    }
 
    /**
@@ -139,7 +147,7 @@ public class IgralisteManagedConnection implements ManagedConnection
     */
    public void addConnectionEventListener(ConnectionEventListener listener)
    {
-      log.finest("addConnectionEventListener()");
+      log.debug("addConnectionEventListener()");
       if (listener == null)
          throw new IllegalArgumentException("Listener is null");
       listeners.add(listener);
@@ -152,7 +160,7 @@ public class IgralisteManagedConnection implements ManagedConnection
     */
    public void removeConnectionEventListener(ConnectionEventListener listener)
    {
-      log.finest("removeConnectionEventListener()");
+      log.debug("removeConnectionEventListener()");
       if (listener == null)
          throw new IllegalArgumentException("Listener is null");
       listeners.remove(listener);
@@ -182,7 +190,7 @@ public class IgralisteManagedConnection implements ManagedConnection
     */
    public PrintWriter getLogWriter() throws ResourceException
    {
-      log.finest("getLogWriter()");
+      log.debug("getLogWriter()");
       return logwriter;
    }
 
@@ -194,7 +202,7 @@ public class IgralisteManagedConnection implements ManagedConnection
     */
    public void setLogWriter(PrintWriter out) throws ResourceException
    {
-      log.finest("setLogWriter()");
+      log.debug("setLogWriter()");
       logwriter = out;
    }
 
@@ -228,7 +236,7 @@ public class IgralisteManagedConnection implements ManagedConnection
     */
    public ManagedConnectionMetaData getMetaData() throws ResourceException
    {
-      log.finest("getMetaData()");
+      log.debug("getMetaData()");
       return new IgralisteManagedConnectionMetaData();
    }
 
@@ -237,7 +245,12 @@ public class IgralisteManagedConnection implements ManagedConnection
     */
    void callMe()
    {
-      log.finest("callMe() Managed Connection");
+      log.debug("callMe() Managed Connection");
+   }
+   
+   void transferFile(String fileName){
+	   log.debug("About to transfer file with name {}",fileName);
+	   engine.startFileTransfering(fileName);
    }
 
 }

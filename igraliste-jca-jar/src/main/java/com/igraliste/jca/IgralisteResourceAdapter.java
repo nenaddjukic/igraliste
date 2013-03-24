@@ -21,8 +21,6 @@
  */
 package com.igraliste.jca;
 
-import java.util.logging.Logger;
-
 import javax.resource.ResourceException;
 import javax.resource.spi.ActivationSpec;
 import javax.resource.spi.BootstrapContext;
@@ -33,6 +31,9 @@ import javax.resource.spi.TransactionSupport;
 import javax.resource.spi.endpoint.MessageEndpointFactory;
 
 import javax.transaction.xa.XAResource;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * IgralisteResourceAdapter
@@ -49,7 +50,7 @@ public class IgralisteResourceAdapter implements ResourceAdapter, java.io.Serial
    private static final long serialVersionUID = 1L;
 
    /** The logger */
-   private static Logger log = Logger.getLogger("IgralisteResourceAdapter");
+   private Logger log = LoggerFactory.getLogger(IgralisteResourceAdapter.class);
 
    /**
     * Default constructor
@@ -69,7 +70,7 @@ public class IgralisteResourceAdapter implements ResourceAdapter, java.io.Serial
    public void endpointActivation(MessageEndpointFactory endpointFactory,
       ActivationSpec spec) throws ResourceException
    {
-      log.finest("endpointActivation()");
+      log.debug("endpointActivation()");
    }
 
    /**
@@ -81,7 +82,7 @@ public class IgralisteResourceAdapter implements ResourceAdapter, java.io.Serial
    public void endpointDeactivation(MessageEndpointFactory endpointFactory,
       ActivationSpec spec)
    {
-      log.finest("endpointDeactivation()");
+      log.debug("endpointDeactivation()");
    }
 
    /**
@@ -93,7 +94,7 @@ public class IgralisteResourceAdapter implements ResourceAdapter, java.io.Serial
    public void start(BootstrapContext ctx)
       throws ResourceAdapterInternalException
    {
-      log.finest("start()");
+      log.debug("start()");
    }
 
    /**
@@ -102,7 +103,7 @@ public class IgralisteResourceAdapter implements ResourceAdapter, java.io.Serial
     */
    public void stop()
    {
-      log.finest("stop()");
+      log.debug("stop()");
    }
 
    /**
@@ -115,7 +116,7 @@ public class IgralisteResourceAdapter implements ResourceAdapter, java.io.Serial
    public XAResource[] getXAResources(ActivationSpec[] specs)
       throws ResourceException
    {
-      log.finest("getXAResources()");
+      log.debug("getXAResources()");
       return null;
    }
 

@@ -21,13 +21,14 @@
  */
 package com.igraliste.jca;
 
-import java.util.logging.Logger;
-
 import javax.naming.NamingException;
 import javax.naming.Reference;
 
 import javax.resource.ResourceException;
 import javax.resource.spi.ConnectionManager;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * IgralisteConnectionFactoryImpl
@@ -42,7 +43,7 @@ public class IgralisteConnectionFactoryImpl implements IgralisteConnectionFactor
 	private static final long serialVersionUID = 1057055706148113318L;
 
 /** The logger */
-   private static Logger log = Logger.getLogger("IgralisteConnectionFactoryImpl");
+   private Logger log = LoggerFactory.getLogger(IgralisteConnectionFactoryImpl.class);
 
    /** Reference */
    private Reference reference;
@@ -81,7 +82,7 @@ public class IgralisteConnectionFactoryImpl implements IgralisteConnectionFactor
    @Override
    public IgralisteConnection getConnection() throws ResourceException
    {
-      log.finest("getConnection()");
+      log.debug("getConnection()");
       return (IgralisteConnection)connectionManager.allocateConnection(mcf, null);
    }
 
@@ -94,7 +95,7 @@ public class IgralisteConnectionFactoryImpl implements IgralisteConnectionFactor
    @Override
    public Reference getReference() throws NamingException
    {
-      log.finest("getReference()");
+      log.debug("getReference()");
       return reference;
    }
 
@@ -106,7 +107,7 @@ public class IgralisteConnectionFactoryImpl implements IgralisteConnectionFactor
    @Override
    public void setReference(Reference reference)
    {
-      log.finest("setReference()");
+      log.debug("setReference()");
       this.reference = reference;
    }
 

@@ -58,6 +58,19 @@
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-core</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-ftp</artifactId>
+		</dependency>
+		<!-- HORNETQ -->
+		<dependency>
+			<groupId>org.hornetq</groupId>
+			<artifactId>hornetq-jms-client</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.hornetq</groupId>
+			<artifactId>hornetq-core</artifactId>
+		</dependency>
 		<!-- IRONJACKAMAR -->
 		<dependency>
 			<groupId>org.jboss.ironjacamar</groupId>

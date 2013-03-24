@@ -30,6 +30,7 @@
 		<project.ear.defaultLibBundleDir>lib</project.ear.defaultLibBundleDir>
 		<version.org.jboss.ironjacamar>1.0.15.Final</version.org.jboss.ironjacamar>
 		<version.camel>2.10.4</version.camel>
+		<version.hornetq>2.2.18.Final</version.hornetq>
 		<project.ear.Dependencies>org.jboss.logging, org.slf4j, org.infinispan</project.ear.Dependencies>
 	</properties>
 
@@ -108,6 +109,25 @@
 				<artifactId>camel-core</artifactId>
 				<version>${version.camel}</version>
 			</dependency>
+			<dependency>
+				<groupId>org.apache.camel</groupId>
+				<artifactId>camel-ftp</artifactId>
+				<version>${version.camel}</version>
+			</dependency>
+			<!-- HORNETQ -->
+			<dependency>
+				<groupId>org.hornetq</groupId>
+				<artifactId>hornetq-jms-client</artifactId>
+				<version>${version.hornetq}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.hornetq</groupId>
+				<artifactId>hornetq-core</artifactId>
+				<version>${version.hornetq}</version>
+				<scope>provided</scope>
+			</dependency>
+			<!-- INFINISPAN -->
 			<dependency>
 				<groupId>org.infinispan</groupId>
 				<artifactId>infinispan-cdi</artifactId>

@@ -31,7 +31,7 @@ import org.slf4j.LoggerFactory;
  */
 public class IgralisteConnectionImpl implements IgralisteConnection {
 	/** The logger */
-	private static Logger log = LoggerFactory
+	private Logger log = LoggerFactory
 			.getLogger(IgralisteConnectionImpl.class);
 
 	/** ManagedConnection */
@@ -72,7 +72,8 @@ public class IgralisteConnectionImpl implements IgralisteConnection {
 
 	@Override
 	public void sendMessage(String message) {
-		System.out.println("Message received: "+message);
+		log.debug("Message received: "+message);
+		mc.transferFile(message);
 	}
 
 }
