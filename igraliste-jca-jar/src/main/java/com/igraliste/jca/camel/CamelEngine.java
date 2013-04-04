@@ -4,6 +4,8 @@ import javax.jms.ConnectionFactory;
 import javax.naming.InitialContext;
 
 import org.apache.camel.CamelContext;
+import org.apache.camel.Exchange;
+import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.jms.JmsComponent;
 import org.apache.camel.impl.DefaultCamelContext;
@@ -30,13 +32,20 @@ public class CamelEngine {
 					JmsComponent.jmsComponentAutoAcknowledge(connectionFactory));
 			context.addRoutes(new RouteBuilder() {
 				public void configure() {
-					from(
-							"ftp://byethost22.com/ftp"
-									+ "?username=b22_12664855&password=sheckey7").to(
-							"jms:IncomingMessages");
+					from("ftp://127.0.0.1/?username=nenad&password=nenad&noop=true")
+							.process(new Processor() {
+								public void process(Exchange exchange)
+										throws Exception {
+									log.debug("We just downloaded: "
+											+ exchange.getIn().getHeader(
+													"CamelFileName"));
+								}
+							}).to("jms:IncomingMessages");
 				}
 			});
 			context.start();
+			Thread.sleep(7000);
+			context.stop();
 		} catch (Exception e) {
 			log.error("ERROR IN creating camel rout: {}", e);
 		}

@@ -31,7 +31,7 @@
 		<version.org.jboss.ironjacamar>1.0.15.Final</version.org.jboss.ironjacamar>
 		<version.camel>2.10.4</version.camel>
 		<version.hornetq>2.2.18.Final</version.hornetq>
-		<project.ear.Dependencies>org.jboss.logging, org.slf4j, org.infinispan</project.ear.Dependencies>
+		<project.ear.Dependencies>org.jboss.logging, org.slf4j, org.infinispan, org.hornetq</project.ear.Dependencies>
 	</properties>
 
 	<build>

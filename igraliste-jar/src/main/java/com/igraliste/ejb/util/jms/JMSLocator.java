@@ -28,6 +28,7 @@ public class JMSLocator implements Serializable{
 	private JndiLocator jndi;
 	
 	public void send(final String queueName,final Object objMessage){
+		log.debug("Sending message : {}; to queue: {}",objMessage.toString(),queueName);
 		try{
 		    ConnectionFactory cf = (ConnectionFactory) jndi.lookup("/ConnectionFactory");
 		    Queue queue = (Queue) jndi.lookup("queue/"+queueName);
