@@ -1,5 +1,7 @@
 package com.igraliste.ejb;
 
+import javax.jms.BytesMessage;
+import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageListener;
 import javax.ejb.MessageDriven;
@@ -20,9 +22,25 @@ public class IncomingMessagesObserver implements MessageListener {
 			.getLogger(IncomingMessagesObserver.class);
 
 	public void onMessage(Message message) {
-		log.debug("I HAVE RECEIVED MESSAGE");
+		log.debug("IncomingMessagesObserver has received the message");
 		HornetQBytesMessage tm = (HornetQBytesMessage) message;
-		log.debug("Received message " + tm.toString());
+		String content = processByteMessage(tm);
+		log.debug("Received message " + content);
 	}
 
+	private String processByteMessage(HornetQBytesMessage tm) {
+		BytesMessage byteMessage = (BytesMessage) tm;
+		String response = "";
+		StringBuffer buffer = new StringBuffer();
+		try {
+			for (int i = 0; i < (int) byteMessage.getBodyLength(); i++) {
+				buffer.append((char) byteMessage.readByte());
+			}
+			response = buffer.toString().trim();
+			log.debug("Message content is: " + response);
+		} catch (JMSException e) {
+			log.error("Error has accoured in processing byte message: {}",e);
+		}
+		return response;
+	}
 }

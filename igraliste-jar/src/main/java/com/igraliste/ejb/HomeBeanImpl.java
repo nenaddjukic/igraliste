@@ -41,9 +41,8 @@ public class HomeBeanImpl implements HomeBean {
 			creator.put("1", entity);
 			jms.send("test", entity);
 			connectionFactory1 = (IgralisteConnectionFactory) jndi.lookup("java:/eis/IgralisteConnectionFactory");
-			log.debug("Test:"+connectionFactory1);
 			IgralisteConnection connection = connectionFactory1.getConnection();
-			connection.sendMessage("LALA");
+			connection.sendMessage("Test.txt");
 		} catch (Exception e) {
 			log.error("Error ocured: {}",e);
 		}
