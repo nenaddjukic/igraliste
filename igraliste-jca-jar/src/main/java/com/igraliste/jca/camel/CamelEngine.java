@@ -32,14 +32,7 @@ public class CamelEngine {
 			context.addRoutes(new RouteBuilder() {
 				public void configure() {
 					from("ftp://127.0.0.1/?username=nenad&password=nenad&noop=true&fileName="+fileName)
-							.process(new Processor() {
-								public void process(Exchange exchange)
-										throws Exception {
-									log.debug("We just downloaded: "
-											+ exchange.getIn().getHeader(
-													"CamelFileName"));
-								}
-							}).to("jms:IncomingMessages");
+							.process(new MyCamelProcessor()).to("jms:IncomingMessages");
 				}
 			});
 			context.start();
