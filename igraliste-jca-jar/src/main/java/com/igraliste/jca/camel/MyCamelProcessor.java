@@ -10,7 +10,10 @@ public class MyCamelProcessor implements Processor{
 
 	@Override
 	public void process(final Exchange exchange) throws Exception {
-		log.debug("We just downloaded: {}",exchange.getIn().getHeader("CamelFileName"));	
+		log.debug("We just downloaded: {}",exchange.getIn().getHeader("CamelFileName"));
+		String custom = exchange.getIn().getBody(String.class);
+		custom.replaceAll("\n", "<br/>");
+		exchange.getIn().setBody(custom);
 	}
 
 }
