@@ -47,6 +47,11 @@ public class HomeBeanImpl implements HomeBean {
 			log.error("Error ocured: {}",e);
 		}
 	}
+	@Override
+	public String storeCamelMessage(String message){
+		log.debug("Storing Camel message to cache: {}",message);
+		return message;
+	}
 
 	@PreDestroy
 	public void predestroyHomeBean() {

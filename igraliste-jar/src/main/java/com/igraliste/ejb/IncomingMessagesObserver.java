@@ -1,14 +1,12 @@
 package com.igraliste.ejb;
 
-import javax.jms.BytesMessage;
+import javax.ejb.ActivationConfigProperty;
+import javax.ejb.MessageDriven;
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageListener;
-import javax.ejb.MessageDriven;
 
-import javax.ejb.ActivationConfigProperty;
-
-import org.hornetq.jms.client.HornetQBytesMessage;
+import org.hornetq.jms.client.HornetQTextMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,24 +21,13 @@ public class IncomingMessagesObserver implements MessageListener {
 
 	public void onMessage(Message message) {
 		log.debug("IncomingMessagesObserver has received the message");
-		HornetQBytesMessage tm = (HornetQBytesMessage) message;
-		String content = processByteMessage(tm);
-		log.debug("Received message " + content);
-	}
-
-	private String processByteMessage(HornetQBytesMessage tm) {
-		BytesMessage byteMessage = (BytesMessage) tm;
-		String response = "";
-		StringBuffer buffer = new StringBuffer();
+		HornetQTextMessage tm = (HornetQTextMessage) message;
+		//String content = processByteMessage(tm);
 		try {
-			for (int i = 0; i < (int) byteMessage.getBodyLength(); i++) {
-				buffer.append((char) byteMessage.readByte());
-			}
-			response = buffer.toString().trim();
-			log.debug("Message content is: " + response);
+			log.debug("Received message " + tm.getText());
 		} catch (JMSException e) {
-			log.error("Error has accoured in processing byte message: {}",e);
+			// TODO Auto-generated catch block
+			log.error("There was an error in JMS handler: {}",e);
 		}
-		return response;
 	}
 }

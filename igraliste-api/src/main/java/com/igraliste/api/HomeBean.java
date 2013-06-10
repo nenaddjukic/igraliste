@@ -6,5 +6,7 @@ import javax.ejb.Local;
 public interface HomeBean {
 	
 	void sendMessageToConsumer();
+
+	String storeCamelMessage(String message);
 	
 }

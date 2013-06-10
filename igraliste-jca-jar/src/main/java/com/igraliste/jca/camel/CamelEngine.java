@@ -11,6 +11,7 @@ import org.apache.camel.CamelContext;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.jms.JmsComponent;
 import org.apache.camel.impl.DefaultCamelContext;
+import org.apache.camel.impl.JndiRegistry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,15 +20,17 @@ public class CamelEngine {
 	Logger log = LoggerFactory.getLogger(CamelEngine.class);
 
 	public CamelEngine() {
-
 	}
 
 	public void startFileTransfering(final String fileName) {
 		log.debug("Received work to transfer: {}", fileName);
-		final CamelContext context = new DefaultCamelContext();
+		final String bean = "java:global/igraliste/igraliste-jar/CamelEnricherImpl!com.igraliste.api.CamelEnricher";
+		CamelContext context = null;
 		final ExecutorService executor = Executors.newFixedThreadPool(20);
 		try {
-			InitialContext ic = new InitialContext();
+			final InitialContext ic = new InitialContext();
+			JndiRegistry jndi = new JndiRegistry(ic);
+			context= new DefaultCamelContext(jndi);
 			ConnectionFactory connectionFactory = (ConnectionFactory) ic
 					.lookup("/ConnectionFactory");
 			context.addComponent("jms",
@@ -35,7 +38,7 @@ public class CamelEngine {
 			context.addRoutes(new RouteBuilder() {
 				public void configure() {
 					from("ftp://127.0.0.1/?username=nenad&password=nenad&noop=true&fileName="
-									+ fileName).process(new MyCamelProcessor())
+									+ fileName).process(new MyCamelProcessor()).beanRef(bean, "storeCamelMessage")
 							.choice()
 							.when(header("CamelFileName").endsWith(".xml"))
 							.to("jms:XmlMessages").otherwise().multicast()
